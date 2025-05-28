@@ -24,4 +24,8 @@
     <EmbeddedResource Include="Resources\TextEditorControl.bmp" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Core.System.Windows.Forms" />
+  </ItemGroup>
+
 </Project>
