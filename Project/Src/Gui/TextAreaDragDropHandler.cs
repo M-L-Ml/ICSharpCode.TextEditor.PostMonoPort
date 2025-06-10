@@ -21,11 +21,15 @@ namespace ICSharpCode.TextEditor
         public void Attach(TextArea textArea)
         {
             this.textArea = textArea;
+#if WINDOWS_OWN
+
             textArea.AllowDrop = true;
 
             textArea.DragEnter += MakeDragEventHandler(OnDragEnter);
             textArea.DragDrop += MakeDragEventHandler(OnDragDrop);
             textArea.DragOver += MakeDragEventHandler(OnDragOver);
+
+#endif
         }
 
         /// <summary>
@@ -133,7 +137,7 @@ namespace ICSharpCode.TextEditor
                         within the current process's text editor!
                     */
                 }
-                    
+
                 textArea.SelectionManager.ClearSelection();
                 InsertString(offset, (string)e.Data.GetData("System.String"));
                 textArea.Document.RequestUpdate(new TextAreaUpdate(TextAreaUpdateType.WholeTextArea));
